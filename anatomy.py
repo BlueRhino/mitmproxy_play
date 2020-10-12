@@ -14,6 +14,10 @@ class Counter:
         self.num = self.num + 1
         ctx.log.info("We've seen %d flows" % self.num)
 
+    def response(self, flow):
+        self.num = self.num + 1
+        flow.response.headers["count"] = str(self.num)
+
 
 addons = [
     Counter()
